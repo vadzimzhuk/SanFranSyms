@@ -8,17 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		0D016BC228572B3D007BEED9 /* SanFranSymsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */; };
-		0D016BC428572B3D007BEED9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BC328572B3D007BEED9 /* ContentView.swift */; };
+		0D016BC428572B3D007BEED9 /* SymbolsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BC328572B3D007BEED9 /* SymbolsListView.swift */; };
 		0D016BC628572B3F007BEED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D016BC528572B3F007BEED9 /* Assets.xcassets */; };
 		0D016BC928572B3F007BEED9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D016BC828572B3F007BEED9 /* Preview Assets.xcassets */; };
+		0D016BE62857BB5C007BEED9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE52857BB5C007BEED9 /* Storage.swift */; };
+		0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE72858749E007BEED9 /* SymbolGridCell.swift */; };
+		0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */; };
+		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
+		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
+		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D016BBE28572B3D007BEED9 /* SanFranSyms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SanFranSyms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsApp.swift; sourceTree = "<group>"; };
-		0D016BC328572B3D007BEED9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0D016BC328572B3D007BEED9 /* SymbolsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsListView.swift; sourceTree = "<group>"; };
 		0D016BC528572B3F007BEED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D016BC828572B3F007BEED9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0D016BE52857BB5C007BEED9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		0D016BE72858749E007BEED9 /* SymbolGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolGridCell.swift; sourceTree = "<group>"; };
+		0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsCategoriesView.swift; sourceTree = "<group>"; };
+		0DDB91212858DE860029FCED /* SymbolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsView.swift; sourceTree = "<group>"; };
+		0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsViewL.swift; sourceTree = "<group>"; };
+		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,7 @@
 		0D016BB528572B3D007BEED9 = {
 			isa = PBXGroup;
 			children = (
+				0D016BE22857B94E007BEED9 /* Data */,
 				0D016BC028572B3D007BEED9 /* SanFranSyms */,
 				0D016BBF28572B3D007BEED9 /* Products */,
 			);
@@ -52,7 +65,12 @@
 			isa = PBXGroup;
 			children = (
 				0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */,
-				0D016BC328572B3D007BEED9 /* ContentView.swift */,
+				0D016BC328572B3D007BEED9 /* SymbolsListView.swift */,
+				0DDB91212858DE860029FCED /* SymbolDetailsView.swift */,
+				0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */,
+				0D016BE72858749E007BEED9 /* SymbolGridCell.swift */,
+				0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */,
+				0D016BE52857BB5C007BEED9 /* Storage.swift */,
 				0D016BC528572B3F007BEED9 /* Assets.xcassets */,
 				0D016BC728572B3F007BEED9 /* Preview Content */,
 			);
@@ -65,6 +83,14 @@
 				0D016BC828572B3F007BEED9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0D016BE22857B94E007BEED9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0DDB9127285A18170029FCED /* SFSymbolsAll.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D016BC928572B3F007BEED9 /* Preview Assets.xcassets in Resources */,
+				0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */,
 				0D016BC628572B3F007BEED9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D016BC428572B3D007BEED9 /* ContentView.swift in Sources */,
+				0D016BC428572B3D007BEED9 /* SymbolsListView.swift in Sources */,
 				0D016BC228572B3D007BEED9 /* SanFranSymsApp.swift in Sources */,
+				0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */,
+				0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */,
+				0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */,
+				0D016BE62857BB5C007BEED9 /* Storage.swift in Sources */,
+				0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

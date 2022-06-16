@@ -11,7 +11,7 @@ import SwiftUI
 struct SanFranSymsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SymbolsCategoriesView()
         }
     }
 }
