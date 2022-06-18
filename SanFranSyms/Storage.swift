@@ -74,7 +74,7 @@ struct SymbolsCategory: Hashable, Codable {
             if excludedSymbols.contains(symbol) { counter += 1}
             return excludedSymbols.contains(symbol)
         }
-        print("cleaned category: \(name) (\(counter))")
+//        print("cleaned category: \(name) (\(counter))")
     }
 }
 

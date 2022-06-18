@@ -14,7 +14,7 @@ struct SymbolDetailsViewL: View {
     ///Properties
     @State var symbolColor1 = Color.black
     @State var symbolColor2 = Color.black
-    @State var backgroundColor: Color = .clear
+    @State private var backgroundColor: Color = .white
     @State var symbolColors: [Color] = [Color.black]
     @State var hierarchyStage: Double = 100
     @State private var isEditing = false
@@ -22,12 +22,29 @@ struct SymbolDetailsViewL: View {
     @State private var showingSharePopover2 = false
     @State private var showingSharePopover3 = false
     @State private var showingSharePopover4 = false
+    @State private var weight: Font.Weight = .regular
 
     // MARK: - body
     var body: some View {
         VStack {
             GeometryReader { g in
                 VStack {
+
+                    HStack {
+                        Text(symbol)
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .lineLimit(1)
+                        Button {
+                            UIPasteboard.general.setValue(symbol, forPasteboardType: UTType.plainText.identifier)
+                        } label: {
+                            Image(systemName: "doc.on.clipboard")
+                        }
+                    }
+
+                    Spacer()
+                        .frame(height: 50)
+
                     HStack {
                         VStack(spacing: 10) {
                             Image(systemName: symbol)
@@ -37,6 +54,7 @@ struct SymbolDetailsViewL: View {
                                 .symbolRenderingMode(.monochrome)
                                 .foregroundColor(symbolColor1)
                                 .background(backgroundColor)
+                                .font(.system(size: 20, weight: weight))
                             Text("Monochrome")
                                 .font(.title3)
 
@@ -49,11 +67,12 @@ struct SymbolDetailsViewL: View {
                                     ShareSymbolView(model: .init(name: symbol,
                                                                  mode: .monochrome,
                                                                  primaryColor: symbolColor1,
-                                                                 secondaryColor: symbolColor2))
+                                                                 secondaryColor: symbolColor2,
+                                                                 backgroundColor: backgroundColor))
                                 }
                         }
 
-                        VStack {
+                        VStack(spacing: 10) {
                             Image(systemName: symbol)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -61,6 +80,7 @@ struct SymbolDetailsViewL: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(symbolColor2, symbolColor1)
                                 .background(backgroundColor)
+                                .font(.system(size: 20, weight: weight))
                             Text("Palette")
                                 .font(.title3)
 
@@ -73,12 +93,13 @@ struct SymbolDetailsViewL: View {
                                     ShareSymbolView(model: .init(name: symbol,
                                                                  mode: .palette,
                                                                  primaryColor: symbolColor1,
-                                                                 secondaryColor: symbolColor2))
+                                                                 secondaryColor: symbolColor2,
+                                                                 backgroundColor: backgroundColor))
                                 }
                         }
 
 
-                        VStack {
+                        VStack(spacing: 10) {
                             Image(systemName: symbol)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -86,6 +107,7 @@ struct SymbolDetailsViewL: View {
                                 .symbolRenderingMode(.hierarchical)
                                 .foregroundColor(symbolColor1)
                                 .background(backgroundColor)
+                                .font(.system(size: 20, weight: weight))
                             Text("Hierarchical")
                                 .font(.title3)
 
@@ -98,11 +120,12 @@ struct SymbolDetailsViewL: View {
                                     ShareSymbolView(model: .init(name: symbol,
                                                                  mode: .hierarchical,
                                                                  primaryColor: symbolColor1,
-                                                                 secondaryColor: symbolColor2))
+                                                                 secondaryColor: symbolColor2,
+                                                                 backgroundColor: backgroundColor))
                                 }
                         }
 
-                        VStack {
+                        VStack(spacing: 10) {
                             Image(systemName: symbol)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -110,6 +133,7 @@ struct SymbolDetailsViewL: View {
                                 .symbolRenderingMode(.multicolor)
                                 .foregroundColor(symbolColor1)
                                 .background(backgroundColor)
+                                .font(.system(size: 20, weight: weight))
                             Text("Multicolor")
                                 .font(.title3)
 
@@ -122,7 +146,8 @@ struct SymbolDetailsViewL: View {
                                     ShareSymbolView(model: .init(name: symbol,
                                                                  mode: .multicolor,
                                                                  primaryColor: symbolColor1,
-                                                                 secondaryColor: symbolColor2))
+                                                                 secondaryColor: symbolColor2,
+                                                                 backgroundColor: backgroundColor))
                                 }
                             }
                     }
@@ -130,25 +155,30 @@ struct SymbolDetailsViewL: View {
                     Spacer()
                         .frame(height: 50)
 
-                    HStack {
-                        Text(symbol)
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .lineLimit(1)
-                        Button {
-                            UIPasteboard.general.setValue(symbol, forPasteboardType: UTType.plainText.identifier)
-                        } label: {
-                            Image(systemName: "doc.on.clipboard")
-                        }
-
-                    }
-
                     Spacer()
                         .frame(height: 50)
+
+
+                    HStack {
+                        Text("Weight")
+                        Spacer()
+                        Picker("Weight", selection: $weight) {
+                            Text("black".capitalized).fontWeight(.black).tag(Font.Weight.black)
+                            Text("heavy".capitalized).fontWeight(.heavy).tag(Font.Weight.heavy)
+                            Text("bold".capitalized).fontWeight(.bold).tag(Font.Weight.bold)
+                            Text("semibold".capitalized).fontWeight(.semibold).tag(Font.Weight.semibold)
+                            Text("regular".capitalized).fontWeight(.regular).tag(Font.Weight.regular)
+                            Text("thin".capitalized).fontWeight(.thin).tag(Font.Weight.thin)
+                            Text("light".capitalized).fontWeight(.light).tag(Font.Weight.light)
+                            Text("ultraLight".capitalized).fontWeight(.ultraLight).tag(Font.Weight.ultraLight)
+                        }
+                    }
 
                     ColorPicker("Primary Color", selection: $symbolColor1)
 
                     ColorPicker("Secondary Color", selection: $symbolColor2)
+
+                    ColorPicker("Background Color", selection: $backgroundColor)
                 }
                 .padding(.horizontal, 50)
             }

@@ -26,6 +26,7 @@ struct ShareSymbolView: View {
                     .padding(.all, 100)
                     .symbolRenderingMode(model.mode.systemMode)
                     .foregroundColor(model.primaryColor)
+                    .background(model.backgroundColor)
             } else {
                 Image(systemName: model.symbolName)
                     .resizable()
@@ -34,6 +35,7 @@ struct ShareSymbolView: View {
                     .padding(.all, 100)
                     .symbolRenderingMode(model.mode.systemMode)
                     .foregroundStyle(model.secondaryColor, model.primaryColor)
+                    .background(model.backgroundColor)
             }
 
             Button {
@@ -71,7 +73,7 @@ struct ShareSymbolView: View {
 
 struct ShareSymbolView_Previews: PreviewProvider {
     static var previews: some View {
-        ShareSymbolView(model: .init(name: "square.and.arrow.up", mode: .palette, primaryColor: .teal, secondaryColor: .pink))
+        ShareSymbolView(model: .init(name: "square.and.arrow.up", mode: .palette, primaryColor: .teal, secondaryColor: .pink, backgroundColor: .gray))
     }
 }
 
@@ -81,12 +83,14 @@ extension ShareSymbolView {
         var mode: AppSymbolRenderingMode
         var primaryColor: Color
         var secondaryColor: Color
+        var backgroundColor: Color
 
-        init(name: String, mode: AppSymbolRenderingMode, primaryColor: Color, secondaryColor: Color) {
+        init(name: String, mode: AppSymbolRenderingMode, primaryColor: Color, secondaryColor: Color, backgroundColor: Color) {
             self.symbolName = name
             self.mode = mode
             self.primaryColor = primaryColor
             self.secondaryColor = secondaryColor
+            self.backgroundColor = backgroundColor
         }
 
         var sharedImageFile: UIImage {

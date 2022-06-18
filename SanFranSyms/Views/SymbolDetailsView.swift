@@ -17,6 +17,7 @@ struct SymbolDetailsView: View {
     @State var symbolColor2 = Color.black
     @State var backgroundColor: Color = .clear
     @State var symbolColors: [Color] = [Color.black]
+    @State var weight: Font.Weight = .regular
 //    @State var hierarchyStage: Double = 100
 //    @State private var isEditing = false
     @State private var showingSharePopover = false
@@ -35,6 +36,7 @@ struct SymbolDetailsView: View {
                             .symbolRenderingMode(mode.systemMode)
                             .foregroundColor(symbolColor1)
                             .background(backgroundColor)
+                            .font(.system(size: 20, weight: weight))
                     } else {
                         Image(systemName: symbol)
                             .resizable()
@@ -43,6 +45,7 @@ struct SymbolDetailsView: View {
                             .symbolRenderingMode(mode.systemMode)
                             .foregroundStyle(symbolColor2, symbolColor1)
                             .background(backgroundColor)
+                            .font(.system(size: 20, weight: weight))
                     }
 
                     HStack {
@@ -65,15 +68,35 @@ struct SymbolDetailsView: View {
                             ShareSymbolView(model: .init(name: symbol,
                                                          mode: mode,
                                                          primaryColor: symbolColor1,
-                                                         secondaryColor: symbolColor2))
+                                                         secondaryColor: symbolColor2,
+                                                         backgroundColor: backgroundColor))
                         }
                     }
 
-                    Picker("Rendering mode", selection: $mode) {
-                        Text(AppSymbolRenderingMode.monochrome.rawValue.capitalized).tag(AppSymbolRenderingMode.monochrome)
-                        Text(AppSymbolRenderingMode.multicolor.rawValue.capitalized).tag(AppSymbolRenderingMode.multicolor)
-                        Text(AppSymbolRenderingMode.palette.rawValue.capitalized).tag(AppSymbolRenderingMode.palette)
-                        Text(AppSymbolRenderingMode.hierarchical.rawValue.capitalized).tag(AppSymbolRenderingMode.hierarchical)
+                    HStack {
+                        Text("Weight")
+                        Spacer()
+                        Picker("Weight", selection: $weight) {
+                            Text("black".capitalized).fontWeight(.black).tag(Font.Weight.black)
+                            Text("heavy".capitalized).fontWeight(.heavy).tag(Font.Weight.heavy)
+                            Text("bold".capitalized).fontWeight(.bold).tag(Font.Weight.bold)
+                            Text("semibold".capitalized).fontWeight(.semibold).tag(Font.Weight.semibold)
+                            Text("regular".capitalized).fontWeight(.regular).tag(Font.Weight.regular)
+                            Text("thin".capitalized).fontWeight(.thin).tag(Font.Weight.thin)
+                            Text("light".capitalized).fontWeight(.light).tag(Font.Weight.light)
+                            Text("ultraLight".capitalized).fontWeight(.ultraLight).tag(Font.Weight.ultraLight)
+                        }
+                    }
+
+                    HStack {
+                        Text("Mode")
+                        Spacer()
+                        Picker("Rendering mode", selection: $mode) {
+                            Text(AppSymbolRenderingMode.monochrome.rawValue.capitalized).tag(AppSymbolRenderingMode.monochrome)
+                            Text(AppSymbolRenderingMode.multicolor.rawValue.capitalized).tag(AppSymbolRenderingMode.multicolor)
+                            Text(AppSymbolRenderingMode.palette.rawValue.capitalized).tag(AppSymbolRenderingMode.palette)
+                            Text(AppSymbolRenderingMode.hierarchical.rawValue.capitalized).tag(AppSymbolRenderingMode.hierarchical)
+                        }
                     }
 
                     ColorPicker("Primary Color", selection: $symbolColor1)
