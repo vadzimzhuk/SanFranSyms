@@ -11,8 +11,6 @@ import SwiftUI
 struct SymbolsListView: View {
     private var model: ViewModel
 
-    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
-
     @State private var showingPopover: Bool = false
 
     private var title: String {

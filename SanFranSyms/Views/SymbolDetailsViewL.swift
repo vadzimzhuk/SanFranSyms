@@ -18,6 +18,10 @@ struct SymbolDetailsViewL: View {
     @State var symbolColors: [Color] = [Color.black]
     @State var hierarchyStage: Double = 100
     @State private var isEditing = false
+    @State private var showingSharePopover1 = false
+    @State private var showingSharePopover2 = false
+    @State private var showingSharePopover3 = false
+    @State private var showingSharePopover4 = false
 
     // MARK: - body
     var body: some View {
@@ -25,7 +29,7 @@ struct SymbolDetailsViewL: View {
             GeometryReader { g in
                 VStack {
                     HStack {
-                        VStack {
+                        VStack(spacing: 10) {
                             Image(systemName: symbol)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -35,6 +39,18 @@ struct SymbolDetailsViewL: View {
                                 .background(backgroundColor)
                             Text("Monochrome")
                                 .font(.title3)
+
+                                Button {
+                                    showingSharePopover1 = true
+                                } label: {
+                                    Image(systemName: "square.and.arrow.up")
+                                }
+                                .popover(isPresented: $showingSharePopover1) {
+                                    ShareSymbolView(model: .init(name: symbol,
+                                                                 mode: .monochrome,
+                                                                 primaryColor: symbolColor1,
+                                                                 secondaryColor: symbolColor2))
+                                }
                         }
 
                         VStack {
@@ -47,6 +63,18 @@ struct SymbolDetailsViewL: View {
                                 .background(backgroundColor)
                             Text("Palette")
                                 .font(.title3)
+
+                                Button {
+                                    showingSharePopover2 = true
+                                } label: {
+                                    Image(systemName: "square.and.arrow.up")
+                                }
+                                .popover(isPresented: $showingSharePopover2) {
+                                    ShareSymbolView(model: .init(name: symbol,
+                                                                 mode: .palette,
+                                                                 primaryColor: symbolColor1,
+                                                                 secondaryColor: symbolColor2))
+                                }
                         }
 
 
@@ -60,6 +88,18 @@ struct SymbolDetailsViewL: View {
                                 .background(backgroundColor)
                             Text("Hierarchical")
                                 .font(.title3)
+
+                                Button {
+                                    showingSharePopover3 = true
+                                } label: {
+                                    Image(systemName: "square.and.arrow.up")
+                                }
+                                .popover(isPresented: $showingSharePopover3) {
+                                    ShareSymbolView(model: .init(name: symbol,
+                                                                 mode: .hierarchical,
+                                                                 primaryColor: symbolColor1,
+                                                                 secondaryColor: symbolColor2))
+                                }
                         }
 
                         VStack {
@@ -72,7 +112,19 @@ struct SymbolDetailsViewL: View {
                                 .background(backgroundColor)
                             Text("Multicolor")
                                 .font(.title3)
-                        }
+
+                                Button {
+                                    showingSharePopover4 = true
+                                } label: {
+                                    Image(systemName: "square.and.arrow.up")
+                                }
+                                .popover(isPresented: $showingSharePopover4) {
+                                    ShareSymbolView(model: .init(name: symbol,
+                                                                 mode: .multicolor,
+                                                                 primaryColor: symbolColor1,
+                                                                 secondaryColor: symbolColor2))
+                                }
+                            }
                     }
 
                     Spacer()
@@ -94,9 +146,9 @@ struct SymbolDetailsViewL: View {
                     Spacer()
                         .frame(height: 50)
 
-                    ColorPicker("Main Color", selection: $symbolColor1)
+                    ColorPicker("Primary Color", selection: $symbolColor1)
 
-                    ColorPicker("Accessory Color", selection: $symbolColor2)
+                    ColorPicker("Secondary Color", selection: $symbolColor2)
                 }
                 .padding(.horizontal, 50)
             }

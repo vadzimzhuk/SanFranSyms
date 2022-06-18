@@ -14,6 +14,7 @@
 		0D016BE62857BB5C007BEED9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE52857BB5C007BEED9 /* Storage.swift */; };
 		0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE72858749E007BEED9 /* SymbolGridCell.swift */; };
 		0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */; };
+		0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */; };
 		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
 		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
 		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
@@ -28,6 +29,7 @@
 		0D016BE52857BB5C007BEED9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0D016BE72858749E007BEED9 /* SymbolGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolGridCell.swift; sourceTree = "<group>"; };
 		0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsCategoriesView.swift; sourceTree = "<group>"; };
+		0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSymbolView.swift; sourceTree = "<group>"; };
 		0DDB91212858DE860029FCED /* SymbolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsView.swift; sourceTree = "<group>"; };
 		0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsViewL.swift; sourceTree = "<group>"; };
 		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
@@ -65,11 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */,
-				0D016BC328572B3D007BEED9 /* SymbolsListView.swift */,
-				0DDB91212858DE860029FCED /* SymbolDetailsView.swift */,
-				0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */,
-				0D016BE72858749E007BEED9 /* SymbolGridCell.swift */,
-				0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */,
+				0D18FAE7285BA89A0044026D /* Views */,
 				0D016BE52857BB5C007BEED9 /* Storage.swift */,
 				0D016BC528572B3F007BEED9 /* Assets.xcassets */,
 				0D016BC728572B3F007BEED9 /* Preview Content */,
@@ -91,6 +89,19 @@
 				0DDB9127285A18170029FCED /* SFSymbolsAll.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		0D18FAE7285BA89A0044026D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D016BC328572B3D007BEED9 /* SymbolsListView.swift */,
+				0DDB91212858DE860029FCED /* SymbolDetailsView.swift */,
+				0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */,
+				0D016BE72858749E007BEED9 /* SymbolGridCell.swift */,
+				0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */,
+				0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				0D016BC228572B3D007BEED9 /* SanFranSymsApp.swift in Sources */,
 				0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */,
 				0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */,
+				0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */,
 				0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */,
 				0D016BE62857BB5C007BEED9 /* Storage.swift in Sources */,
 				0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */,
@@ -227,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -281,7 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -297,11 +309,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SanFranSyms/Preview Content\"";
 				DEVELOPMENT_TEAM = L2HG8KUPMF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Aplpication need access to photo library in order to save images";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -311,7 +324,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSyms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -326,11 +339,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SanFranSyms/Preview Content\"";
 				DEVELOPMENT_TEAM = L2HG8KUPMF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Aplpication need access to photo library in order to save images";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -340,7 +354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSyms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

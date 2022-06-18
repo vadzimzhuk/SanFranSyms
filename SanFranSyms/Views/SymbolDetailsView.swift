@@ -17,8 +17,9 @@ struct SymbolDetailsView: View {
     @State var symbolColor2 = Color.black
     @State var backgroundColor: Color = .clear
     @State var symbolColors: [Color] = [Color.black]
-    @State var hierarchyStage: Double = 100
-    @State private var isEditing = false
+//    @State var hierarchyStage: Double = 100
+//    @State private var isEditing = false
+    @State private var showingSharePopover = false
 
     // MARK: - body
     var body: some View {
@@ -50,10 +51,21 @@ struct SymbolDetailsView: View {
                             .fontWeight(.bold)
                             .lineLimit(1)
                         Button {
-//                            UIPasteboard.general.setValue(symbol, forPasteboardType: UTType.plainText.identifier)
                             UIPasteboard.general.string = symbol
                         } label: {
                             Image(systemName: "doc.on.clipboard")
+                        }
+
+                        Button {
+                            showingSharePopover = true
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .popover(isPresented: $showingSharePopover) {
+                            ShareSymbolView(model: .init(name: symbol,
+                                                         mode: mode,
+                                                         primaryColor: symbolColor1,
+                                                         secondaryColor: symbolColor2))
                         }
                     }
 
@@ -64,10 +76,10 @@ struct SymbolDetailsView: View {
                         Text(AppSymbolRenderingMode.hierarchical.rawValue.capitalized).tag(AppSymbolRenderingMode.hierarchical)
                     }
 
-                    ColorPicker("Main Color", selection: $symbolColor1)
+                    ColorPicker("Primary Color", selection: $symbolColor1)
 
                     if mode == .palette {
-                        ColorPicker("Accessory Color", selection: $symbolColor2)
+                        ColorPicker("Secondary Color", selection: $symbolColor2)
                     }
                 }
                 .padding(.horizontal, 50)
@@ -96,6 +108,7 @@ struct SymbolDetailsView_Previews: PreviewProvider {
 
 enum AppSymbolRenderingMode: String, CaseIterable, Identifiable {
     case monochrome, multicolor, palette, hierarchical
+    
     var id: Self { self }
 
     var systemMode: SymbolRenderingMode {
