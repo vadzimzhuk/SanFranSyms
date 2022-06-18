@@ -15,11 +15,9 @@ struct SymbolDetailsView: View {
     @State var mode: AppSymbolRenderingMode = .monochrome
     @State var symbolColor1 = Color.black
     @State var symbolColor2 = Color.black
-    @State var backgroundColor: Color = .clear
+    @State var backgroundColor: Color = .white
     @State var symbolColors: [Color] = [Color.black]
     @State var weight: Font.Weight = .regular
-//    @State var hierarchyStage: Double = 100
-//    @State private var isEditing = false
     @State private var showingSharePopover = false
 
     // MARK: - body
@@ -27,6 +25,8 @@ struct SymbolDetailsView: View {
         VStack {
             GeometryReader { g in
                 VStack {
+                    Spacer()
+                        .frame(height: 10)
                     // TODO: - fix to avoid duplication
                     if mode != .palette {
                         Image(systemName: symbol)
@@ -104,6 +104,8 @@ struct SymbolDetailsView: View {
                     if mode == .palette {
                         ColorPicker("Secondary Color", selection: $symbolColor2)
                     }
+
+                    ColorPicker("Background Color", selection: $backgroundColor)
                 }
                 .padding(.horizontal, 50)
             }
