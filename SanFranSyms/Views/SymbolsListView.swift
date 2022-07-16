@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct SymbolsListView: View {
-    private var model: ViewModel
+    @ObservedObject private var model: ViewModel
 
     @State private var showingPopover: Bool = false
 
@@ -28,7 +28,9 @@ struct SymbolsListView: View {
     ]
 
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
+            TextField("Search text field", text: $model.searchText, prompt: Text("Type symbol name here"))
+
             ScrollView {
                 LazyVGrid(columns: threeColumnsGridStyle, spacing: 30){
                     ForEach(symbolNames, id: \.self) { symbol in
@@ -62,7 +64,7 @@ struct ContentView_Previews: PreviewProvider {
 
 extension SymbolsListView {
 
-    class ViewModel {
+    class ViewModel: ObservableObject {
         var category: SymbolsCategory
 
         var title: String {
@@ -70,8 +72,10 @@ extension SymbolsListView {
         }
 
         var symbols: [String] {
-            category.symbols
+            category.symbols.filter { !searchText.isEmpty ? $0.contains(searchText.lowercased()) : true }
         }
+
+        @Published var searchText: String = ""
 
         init(category: SymbolsCategory) {
             self.category = category
