@@ -18,25 +18,26 @@ struct ShareSymbolView: View {
 
     var body: some View {
         VStack {
-            if model.mode != .palette {
-                Image(systemName: model.symbolName)
-                    .resizable()
-                    .frame(minWidth: 100, minHeight: 100)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.all, 100)
-                    .symbolRenderingMode(model.mode.systemMode)
-                    .foregroundColor(model.primaryColor)
-                    .background(model.backgroundColor)
-            } else {
-                Image(systemName: model.symbolName)
-                    .resizable()
-                    .frame(minWidth: 100, minHeight: 100)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.all, 100)
-                    .symbolRenderingMode(model.mode.systemMode)
-                    .foregroundStyle(model.secondaryColor, model.primaryColor)
-                    .background(model.backgroundColor)
+            HStack {
+                if model.mode != .palette {
+                    Image(systemName: model.symbolName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.all, 100)
+                        .symbolRenderingMode(model.mode.systemMode)
+                        .foregroundColor(model.primaryColor)
+                        .background(model.backgroundColor)
+                } else {
+                    Image(systemName: model.symbolName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.all, 100)
+                        .symbolRenderingMode(model.mode.systemMode)
+                        .foregroundStyle(model.secondaryColor, model.primaryColor)
+                        .background(model.backgroundColor)
+                }
             }
+            .padding(.all, 25)
 
             Button {
                     showShareSheet = true
