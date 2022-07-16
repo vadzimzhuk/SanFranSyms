@@ -116,13 +116,13 @@ extension ShareSymbolView {
         var sharedUIKitCode: String {
             switch mode {
                 case .palette:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(paletteColors: [UIColor(\(secondaryColor)), UIColor(\(primaryColor))]))!"
+                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(paletteColors: [UIColor(cgColor: \(secondaryColor.asCGColorCode)), UIColor(cgColor: \(primaryColor.asCGColorCode))]))!"
                 case .multicolor:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(\(primaryColor))))!"
+                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: \(primaryColor.asCGColorCode))))!"
                 case .hierarchical:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(\(primaryColor))))!"
+                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: \(primaryColor.asCGColorCode))))!"
                 case .monochrome:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(\(primaryColor)))!"
+                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: \(primaryColor.asCGColorCode)))!"
             }
         }
 
@@ -131,13 +131,13 @@ extension ShareSymbolView {
                 return """
 Image(systemName: \"\(symbolName)\")
     .symbolRenderingMode(.\(mode))
-    .foregroundColor(.\(primaryColor))
+    .foregroundColor(Color(cgColor: \(primaryColor.asCGColorCode)))
 """
             } else {
                 return """
 Image(systemName: symbolName)
     .symbolRenderingMode(.\(mode))
-    .foregroundStyle(.\(secondaryColor), .\(primaryColor))
+    .foregroundStyle(Color(cgColor:\(secondaryColor)), Color(cgColor:\(primaryColor)))
 """
             }
         }
@@ -173,5 +173,13 @@ extension View {
         return renderer.image { _ in
             view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
         }
+    }
+}
+
+// MARK: - Color
+
+extension Color {
+    var asCGColorCode: String {
+        "CGColor(red: \(self.cgColor?.components?[0] ?? 0), green: \(self.cgColor?.components?[1] ?? 0), blue: \(self.cgColor?.components?[2] ?? 0), alpha: \(self.cgColor?.components?[3] ?? 0))"
     }
 }
