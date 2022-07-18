@@ -19,6 +19,9 @@ protocol SFSymbolsProvider {
 class FileStorageManager: StorageService {
 
     static let shared = FileStorageManager()
+    
+    static let fileName = "SFSymbolsAll"
+    static let fileNameExtension = ".json"
 
     private var symbolCategories: [SymbolsCategory] = []
 
@@ -27,7 +30,7 @@ class FileStorageManager: StorageService {
     }
 
     private func getCategories() -> [SymbolsCategory] {
-        let url = Bundle.main.url(forResource: "SFSymbolsAll", withExtension: ".json")!
+        let url = Bundle.main.url(forResource: Self.fileName, withExtension: Self.fileNameExtension)!
         let data = try! Data(contentsOf: url)
         let symbols = try! JSONDecoder().decode(SymbolsCategoriesResponse.self, from: data)
 
