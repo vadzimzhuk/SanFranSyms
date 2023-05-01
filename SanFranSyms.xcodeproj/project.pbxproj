@@ -23,7 +23,27 @@
 		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
 		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
 		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
+		C845D0462885687A00ABB5DF /* SanFranSymsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */; };
+		C845D0532885795300ABB5DF /* SanFranSymsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C845D0522885795300ABB5DF /* SanFranSymsUITests.swift */; };
+		C845D0552885795400ABB5DF /* SanFranSymsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C845D0542885795400ABB5DF /* SanFranSymsUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C845D0472885687A00ABB5DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D016BB628572B3D007BEED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D016BBD28572B3D007BEED9;
+			remoteInfo = SanFranSyms;
+		};
+		C845D0562885795400ABB5DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D016BB628572B3D007BEED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D016BBD28572B3D007BEED9;
+			remoteInfo = SanFranSyms;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0D016BBE28572B3D007BEED9 /* SanFranSyms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SanFranSyms.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +60,12 @@
 		0DDB91212858DE860029FCED /* SymbolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsView.swift; sourceTree = "<group>"; };
 		0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsViewL.swift; sourceTree = "<group>"; };
 		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
+		C845D038288567B500ABB5DF /* SanFranSymsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsTests.swift; sourceTree = "<group>"; };
+		C845D0432885687A00ABB5DF /* SanFranSymsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanFranSymsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsTests.swift; sourceTree = "<group>"; };
+		C845D0502885795300ABB5DF /* SanFranSymsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanFranSymsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C845D0522885795300ABB5DF /* SanFranSymsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsUITests.swift; sourceTree = "<group>"; };
+		C845D0542885795400ABB5DF /* SanFranSymsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +79,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C845D0402885687A00ABB5DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C845D04D2885795300ABB5DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +101,9 @@
 			children = (
 				0D016BE22857B94E007BEED9 /* Data */,
 				0D016BC028572B3D007BEED9 /* SanFranSyms */,
+				C845D037288567B500ABB5DF /* SanFranSymsTests */,
+				C845D0442885687A00ABB5DF /* SanFranSymsTests */,
+				C845D0512885795300ABB5DF /* SanFranSymsUITests */,
 				0D016BBF28572B3D007BEED9 /* Products */,
 				0DC3A3852A004DA700AF5882 /* Frameworks */,
 			);
@@ -70,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				0D016BBE28572B3D007BEED9 /* SanFranSyms.app */,
+				C845D0432885687A00ABB5DF /* SanFranSymsTests.xctest */,
+				C845D0502885795300ABB5DF /* SanFranSymsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +167,23 @@
 			children = (
 			);
 			name = Frameworks;
+            sourceTree = "<group>";
+        };
+		C845D0442885687A00ABB5DF /* SanFranSymsTests */ = {
+			isa = PBXGroup;
+			children = (
+				C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */,
+			);
+			path = SanFranSymsTests;
+			sourceTree = "<group>";
+		};
+		C845D0512885795300ABB5DF /* SanFranSymsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C845D0522885795300ABB5DF /* SanFranSymsUITests.swift */,
+				C845D0542885795400ABB5DF /* SanFranSymsUITestsLaunchTests.swift */,
+			);
+			path = SanFranSymsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +211,42 @@
 			productReference = 0D016BBE28572B3D007BEED9 /* SanFranSyms.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C845D0422885687A00ABB5DF /* SanFranSymsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C845D0492885687A00ABB5DF /* Build configuration list for PBXNativeTarget "SanFranSymsTests" */;
+			buildPhases = (
+				C845D03F2885687A00ABB5DF /* Sources */,
+				C845D0402885687A00ABB5DF /* Frameworks */,
+				C845D0412885687A00ABB5DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C845D0482885687A00ABB5DF /* PBXTargetDependency */,
+			);
+			name = SanFranSymsTests;
+			productName = SanFranSymsTests;
+			productReference = C845D0432885687A00ABB5DF /* SanFranSymsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C845D04F2885795300ABB5DF /* SanFranSymsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C845D0582885795400ABB5DF /* Build configuration list for PBXNativeTarget "SanFranSymsUITests" */;
+			buildPhases = (
+				C845D04C2885795300ABB5DF /* Sources */,
+				C845D04D2885795300ABB5DF /* Frameworks */,
+				C845D04E2885795300ABB5DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C845D0572885795400ABB5DF /* PBXTargetDependency */,
+			);
+			name = SanFranSymsUITests;
+			productName = SanFranSymsUITests;
+			productReference = C845D0502885795300ABB5DF /* SanFranSymsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -156,11 +254,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					0D016BBD28572B3D007BEED9 = {
 						CreatedOnToolsVersion = 13.3;
+					};
+					C845D0422885687A00ABB5DF = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 0D016BBD28572B3D007BEED9;
+					};
+					C845D04F2885795300ABB5DF = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 0D016BBD28572B3D007BEED9;
 					};
 				};
 			};
@@ -181,6 +287,8 @@
 			projectRoot = "";
 			targets = (
 				0D016BBD28572B3D007BEED9 /* SanFranSyms */,
+				C845D0422885687A00ABB5DF /* SanFranSymsTests */,
+				C845D04F2885795300ABB5DF /* SanFranSymsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,6 +302,20 @@
 				0DC3A37D29FFF41200AF5882 /* GoogleService-Info.plist in Resources */,
 				0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */,
 				0D016BC628572B3F007BEED9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C845D0412885687A00ABB5DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C845D04E2885795300ABB5DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +338,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C845D03F2885687A00ABB5DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C845D0462885687A00ABB5DF /* SanFranSymsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C845D04C2885795300ABB5DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C845D0552885795400ABB5DF /* SanFranSymsUITestsLaunchTests.swift in Sources */,
+				C845D0532885795300ABB5DF /* SanFranSymsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C845D0482885687A00ABB5DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D016BBD28572B3D007BEED9 /* SanFranSyms */;
+			targetProxy = C845D0472885687A00ABB5DF /* PBXContainerItemProxy */;
+		};
+		C845D0572885795400ABB5DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D016BBD28572B3D007BEED9 /* SanFranSyms */;
+			targetProxy = C845D0562885795400ABB5DF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0D016BCA28572B3F007BEED9 /* Debug */ = {
@@ -397,6 +549,80 @@
 			};
 			name = Release;
 		};
+		C845D04A2885687A00ABB5DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L2HG8KUPMF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SanFranSyms.app/SanFranSyms";
+			};
+			name = Debug;
+		};
+		C845D04B2885687A00ABB5DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L2HG8KUPMF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SanFranSyms.app/SanFranSyms";
+			};
+			name = Release;
+		};
+		C845D0592885795400ABB5DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L2HG8KUPMF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SanFranSyms;
+			};
+			name = Debug;
+		};
+		C845D05A2885795400ABB5DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L2HG8KUPMF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SanFranSyms;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -414,6 +640,24 @@
 			buildConfigurations = (
 				0D016BCD28572B3F007BEED9 /* Debug */,
 				0D016BCE28572B3F007BEED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C845D0492885687A00ABB5DF /* Build configuration list for PBXNativeTarget "SanFranSymsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C845D04A2885687A00ABB5DF /* Debug */,
+				C845D04B2885687A00ABB5DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C845D0582885795400ABB5DF /* Build configuration list for PBXNativeTarget "SanFranSymsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C845D0592885795400ABB5DF /* Debug */,
+				C845D05A2885795400ABB5DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
