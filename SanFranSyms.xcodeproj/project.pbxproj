@@ -15,6 +15,11 @@
 		0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE72858749E007BEED9 /* SymbolGridCell.swift */; };
 		0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */; };
 		0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */; };
+		0DC3A37D29FFF41200AF5882 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3A37C29FFF41200AF5882 /* GoogleService-Info.plist */; };
+		0DC3A38029FFF57C00AF5882 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC3A37F29FFF57C00AF5882 /* FirebaseCrashlytics */; };
+		0DC3A38229FFF57C00AF5882 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC3A38129FFF57C00AF5882 /* FirebaseRemoteConfigSwift */; };
+		0DC3A38429FFF62000AF5882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A38329FFF62000AF5882 /* AppDelegate.swift */; };
+		0DC3A3872A004DA700AF5882 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC3A3862A004DA700AF5882 /* FirebaseAnalyticsSwift */; };
 		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
 		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
 		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
@@ -30,6 +35,8 @@
 		0D016BE72858749E007BEED9 /* SymbolGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolGridCell.swift; sourceTree = "<group>"; };
 		0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsCategoriesView.swift; sourceTree = "<group>"; };
 		0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSymbolView.swift; sourceTree = "<group>"; };
+		0DC3A37C29FFF41200AF5882 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0DC3A38329FFF62000AF5882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DDB91212858DE860029FCED /* SymbolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsView.swift; sourceTree = "<group>"; };
 		0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsViewL.swift; sourceTree = "<group>"; };
 		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
@@ -40,6 +47,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC3A3872A004DA700AF5882 /* FirebaseAnalyticsSwift in Frameworks */,
+				0DC3A38029FFF57C00AF5882 /* FirebaseCrashlytics in Frameworks */,
+				0DC3A38229FFF57C00AF5882 /* FirebaseRemoteConfigSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +62,7 @@
 				0D016BE22857B94E007BEED9 /* Data */,
 				0D016BC028572B3D007BEED9 /* SanFranSyms */,
 				0D016BBF28572B3D007BEED9 /* Products */,
+				0DC3A3852A004DA700AF5882 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,7 +77,9 @@
 		0D016BC028572B3D007BEED9 /* SanFranSyms */ = {
 			isa = PBXGroup;
 			children = (
+				0DC3A37C29FFF41200AF5882 /* GoogleService-Info.plist */,
 				0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */,
+				0DC3A38329FFF62000AF5882 /* AppDelegate.swift */,
 				0D18FAE7285BA89A0044026D /* Views */,
 				0D016BE52857BB5C007BEED9 /* Storage.swift */,
 				0D016BC528572B3F007BEED9 /* Assets.xcassets */,
@@ -104,6 +117,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0DC3A3852A004DA700AF5882 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,6 +140,11 @@
 			dependencies = (
 			);
 			name = SanFranSyms;
+			packageProductDependencies = (
+				0DC3A37F29FFF57C00AF5882 /* FirebaseCrashlytics */,
+				0DC3A38129FFF57C00AF5882 /* FirebaseRemoteConfigSwift */,
+				0DC3A3862A004DA700AF5882 /* FirebaseAnalyticsSwift */,
+			);
 			productName = SanFranSyms;
 			productReference = 0D016BBE28572B3D007BEED9 /* SanFranSyms.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +173,9 @@
 				Base,
 			);
 			mainGroup = 0D016BB528572B3D007BEED9;
+			packageReferences = (
+				0DC3A37E29FFF57C00AF5882 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 0D016BBF28572B3D007BEED9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -163,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D016BC928572B3F007BEED9 /* Preview Assets.xcassets in Resources */,
+				0DC3A37D29FFF41200AF5882 /* GoogleService-Info.plist in Resources */,
 				0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */,
 				0D016BC628572B3F007BEED9 /* Assets.xcassets in Resources */,
 			);
@@ -178,6 +207,7 @@
 				0D016BC428572B3D007BEED9 /* SymbolsListView.swift in Sources */,
 				0D016BC228572B3D007BEED9 /* SanFranSymsApp.swift in Sources */,
 				0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */,
+				0DC3A38429FFF62000AF5882 /* AppDelegate.swift in Sources */,
 				0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */,
 				0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */,
 				0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */,
@@ -389,6 +419,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0DC3A37E29FFF57C00AF5882 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DC3A37F29FFF57C00AF5882 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DC3A37E29FFF57C00AF5882 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		0DC3A38129FFF57C00AF5882 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DC3A37E29FFF57C00AF5882 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		0DC3A3862A004DA700AF5882 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DC3A37E29FFF57C00AF5882 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D016BB628572B3D007BEED9 /* Project object */;
 }

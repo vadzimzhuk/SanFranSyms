@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct SanFranSymsApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+    let dataProvider: SFSymbolsProvider = SFSymbolsManager()
+
     var body: some Scene {
         WindowGroup {
-            SymbolsCategoriesView()
+            SymbolsCategoriesView(categories: dataProvider.allCategories)
         }
     }
 }

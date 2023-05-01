@@ -6,61 +6,112 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseRemoteConfig
 import SwiftUI
 
-protocol StorageService {
-//    func getCategories() -> SymbolsCategoriesResponse
-}
+protocol StorageService {}
 
 protocol SFSymbolsProvider {
     var allCategories: [SymbolsCategory] { get }
+}
+
+protocol AppConfigProvider {
+    var content: ContentData? { get }
+
+    func fetchConfig()
+}
+
+typealias ContentData = [SymbolsCategory]
+
+class AppConfigManager: AppConfigProvider {
+    private let remoteConfig: RemoteConfig // TODO: - set as global dependency
+
+    var content: ContentData? {
+        let symbolsData = remoteConfig.configValue(forKey: "content").dataValue
+            let symbols = try? JSONDecoder().decode(SymbolsCategoriesResponse.self, from: symbolsData)
+
+            if #available(iOS 16.0, *) {
+                return symbols?.categories
+            } else {
+                let excludedCategory = symbols?.categories.first { $0.name == "what's new" }
+
+                let categories: [SymbolsCategory]? = symbols?.categories.map { category in
+                    var cat = category
+                    cat.filterSymbols(excludedSymbols: excludedCategory?.symbols ?? [])
+                    return cat
+                }
+                return categories
+            }
+    }
+
+    init() {
+        remoteConfig = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        remoteConfig.configSettings = settings
+    }
+
+    func fetchConfig() {
+        Task { [weak self] in
+            try await self?.remoteConfig.fetch()
+            try await self?.remoteConfig.activate()
+        }
+    }
 }
 
 class FileStorageManager: StorageService {
 
     static let shared = FileStorageManager()
 
-    private var symbolCategories: [SymbolsCategory] = []
-
-    private init() {
-        symbolCategories = getCategories()
+    private var symbolCategories: [SymbolsCategory] {
+        getCategories()
     }
 
+    private var configProvider: AppConfigProvider = AppConfigManager()
+
+    private init() {}
+
     private func getCategories() -> [SymbolsCategory] {
-        let url = Bundle.main.url(forResource: "SFSymbolsAll", withExtension: ".json")!
-        let data = try! Data(contentsOf: url)
-        let symbols = try! JSONDecoder().decode(SymbolsCategoriesResponse.self, from: data)
 
-        if #available(iOS 16.0, *) {
-            return symbols.categories
+        if let content = configProvider.content {
+            return content
         } else {
-            let excludedCategory = symbols.categories.first { $0.name == "what's new" }
+            configProvider.fetchConfig()
 
-            let categories: [SymbolsCategory] = symbols.categories.map { category in
-                var cat = category
-                cat.filterSymbols(excludedSymbols: excludedCategory?.symbols ?? [])
-                return cat
+            let url = Bundle.main.url(forResource: "SFSymbolsAll", withExtension: ".json")!
+            let data = try! Data(contentsOf: url)
+
+            let symbols = try! JSONDecoder().decode(SymbolsCategoriesResponse.self, from: data)
+
+            if #available(iOS 16.0, *) {
+                return symbols.categories
+            } else {
+                let excludedCategory = symbols.categories.first { $0.name == "what's new" }
+
+                let categories: [SymbolsCategory] = symbols.categories.map { category in
+                    var cat = category
+                    cat.filterSymbols(excludedSymbols: excludedCategory?.symbols ?? [])
+                    return cat
+                }
+                return categories
             }
-            return categories
         }
     }
 
     func allCategories() -> [SymbolsCategory] {
-        // TODO: - exclude whats new
-        if #available(iOS 16.0, *) {
-            return symbolCategories
-        } else {
-            return symbolCategories.filter { category in
-                category.name != "what's new"
-            }
+        return symbolCategories.filter { category in
+            guard #available(iOS 16.0, *) else { return category.name != "what's new" }
+
+            return true
         }
     }
 }
 
 class SFSymbolsManager: SFSymbolsProvider {
-    var allCategories: [SymbolsCategory] = {
+    var allCategories: [SymbolsCategory] {
         FileStorageManager.shared.allCategories()
-    }()
+    }
 }
 
 struct SymbolsCategory: Hashable, Codable {
@@ -74,7 +125,6 @@ struct SymbolsCategory: Hashable, Codable {
             if excludedSymbols.contains(symbol) { counter += 1}
             return excludedSymbols.contains(symbol)
         }
-//        print("cleaned category: \(name) (\(counter))")
     }
 }
 
