@@ -157,4 +157,21 @@ enum AppSymbolRenderingMode: String, CaseIterable, Identifiable {
                 return "UIImage(systemName: \"%1$@\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: %3$@))!"
         }
     }
+
+    var swiftUICode: String {
+        switch self {
+            case .palette:
+                return """
+Image(systemName: \"%1$@\")
+.symbolRenderingMode(.%2$@)
+.foregroundColor(Color(cgColor: %3$@)))
+"""
+            default:
+                return """
+Image(systemName: \"%1$@\")
+.symbolRenderingMode(.%2$@)
+.foregroundStyle(Color(cgColor: %3$@), Color(cgColor: %4$@))
+"""
+        }
+    }
 }

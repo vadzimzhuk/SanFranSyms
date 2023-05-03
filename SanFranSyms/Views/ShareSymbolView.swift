@@ -118,18 +118,11 @@ extension ShareSymbolView {
         }
 
         var sharedSwiftUICode: String {
-            if mode != .palette {
-                return """
-Image(systemName: \"\(symbolName)\")
-    .symbolRenderingMode(.\(mode))
-    .foregroundColor(Color(cgColor: \(primaryColor.asCGColorCode)))
-"""
-            } else {
-                return """
-Image(systemName: symbolName)
-    .symbolRenderingMode(.\(mode))
-    .foregroundStyle(Color(cgColor:\(secondaryColor)), Color(cgColor:\(primaryColor)))
-"""
+            switch mode {
+                case .palette:
+                    return String(format: mode.swiftUICode, symbolName, String(describing: mode), primaryColor.asCGColorCode)
+                default:
+                    return String(format: mode.swiftUICode, String(describing: mode), String(describing: secondaryColor), String(describing: primaryColor))
             }
         }
     }
