@@ -16,9 +16,8 @@ class AppConfigManager: AppConfigProvider {
 
     private let remoteConfig: RemoteConfig
 
-    var content: ContentData? {
+    var symbols: [SymbolsCategory] {
         let symbolsData = remoteConfig.configValue(forKey: "content").dataValue
-        let symbols = try? JSONDecoder().decode(SymbolsCategoriesResponse.self, from: symbolsData)
 
         if symbolsData.isEmpty {
             Task {
@@ -26,12 +25,19 @@ class AppConfigManager: AppConfigProvider {
             }
         }
 
-        if #available(iOS 16.0, *) {
-            return symbols?.categories
-        } else {
-            let excludedCategory = symbols?.categories.first { $0.name == "what's new" }
+        let symbols = try? JSONDecoder().decode(SymbolsCategoriesResponse.self, from: symbolsData)
 
-            let categories: [SymbolsCategory]? = symbols?.categories.map { category in
+        return symbols?.categories ?? []
+    }
+
+    var content: ContentData? {
+
+        if #available(iOS 16.0, *) {
+            return symbols
+        } else {
+            let excludedCategory = symbols.first { $0.name == "what's new" }
+
+            let categories: [SymbolsCategory]? = symbols.map { category in
                 var cat = category
                 cat.filterSymbols(excludedSymbols: excludedCategory?.symbols ?? [])
                 return cat

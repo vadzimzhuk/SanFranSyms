@@ -13,13 +13,16 @@ class SanFranSymsTests: XCTestCase {
     
     var sfSymbolsProvider: SanFranSyms.SFSymbolsProvider!
     var sfSymbolCategories: [SanFranSyms.SymbolsCategory]!
+    var fileStorageService: FileStorageManager!
+    var appConfigService: AppConfigManager!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         try super.setUpWithError()
-        
-        sfSymbolsProvider = SanFranSyms.SFSymbolsManager()
-        sfSymbolCategories = sfSymbolsProvider.allCategories
+
+        fileStorageService = FileStorageManager()
+        appConfigService = AppConfigManager()
+        sfSymbolsProvider = SFSymbolsManager(storageService: fileStorageService,
+                                             configProvider: appConfigService)
     }
 
     override func tearDownWithError() throws {
@@ -37,23 +40,32 @@ class SanFranSymsTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         let promise = expectation(description: "ok")
-        DispatchQueue.main.async {
-            sleep(1)
+        Task {
+            _ = appConfigService.symbols
             promise.fulfill()
         }
+
         wait(for: [promise], timeout: 1)
     }
     
-    func testJsonData() throws {
+    func testJsonDataFromFile() throws {
         guard let url = Bundle.main.url(forResource: FileStorageManager.fileName, withExtension: FileStorageManager.fileNameExtension) else { XCTFail("File with such name and extension does not exist"); return }
         let data = try Data(contentsOf: url)
         let _ = try JSONDecoder().decode(SymbolsCategoriesResponse.self, from: data)
     }
+
+    func testFileStorageData() throws {
+        let symbols = fileStorageService.getSymbols()
+
+        XCTAssertFalse(symbols.isEmpty)
+        XCTAssertEqual(symbols.count, 29)
+    }
     
-    func testSymbolAvailability() throws {
+    func testLocalSymbolsAvailability() throws {
         var errors: [Error] = []
-        
-        sfSymbolCategories.forEach { category in
+        let symbolCategories = fileStorageService.getSymbols()
+
+        symbolCategories.forEach { category in
             category.symbols.forEach { symbol in
                 guard let _ = UIImage(systemName: symbol) else {
                     errors.append(NSError(domain: "Symbol \"\(symbol)\" is not supported", code: 1))
@@ -70,11 +82,16 @@ class SanFranSymsTests: XCTestCase {
         XCTAssert(errors.isEmpty, message)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
+    func testLocalDataSourcePerformance() throws {
         measure {
-            // Put the code you want to measure the time of here.
+            _ = fileStorageService.getSymbols()
         }
     }
 
+    func testRemoteConfigPerformance() throws {
+
+        measure {
+            _ = appConfigService.symbols
+        }
+    }
 }

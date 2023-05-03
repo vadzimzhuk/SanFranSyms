@@ -16,8 +16,8 @@ protocol StorageService {
 typealias ContentData = [SymbolsCategory]
 
 class FileStorageManager: StorageService {
-    private static let fileName = "SFSymbolsAll"
-    private static let fileNameExtension = ".json"
+    static let fileName = "SFSymbolsAll"
+    static let fileNameExtension = ".json"
 
     private var symbolCategories: [SymbolsCategory] { getCategories() }
 
