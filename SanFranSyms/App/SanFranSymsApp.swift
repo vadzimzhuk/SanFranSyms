@@ -12,11 +12,13 @@ import Firebase
 struct SanFranSymsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-    let dataProvider: SFSymbolsProvider = SFSymbolsManager()
-
     var body: some Scene {
         WindowGroup {
-            SymbolsCategoriesView(categories: dataProvider.allCategories)
+            SymbolsCategoriesView()
         }
+    }
+
+    init() {
+        FirebaseApp.configure()
     }
 }

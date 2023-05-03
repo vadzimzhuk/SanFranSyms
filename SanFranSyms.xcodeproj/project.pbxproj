@@ -11,15 +11,20 @@
 		0D016BC428572B3D007BEED9 /* SymbolsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BC328572B3D007BEED9 /* SymbolsListView.swift */; };
 		0D016BC628572B3F007BEED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D016BC528572B3F007BEED9 /* Assets.xcassets */; };
 		0D016BC928572B3F007BEED9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D016BC828572B3F007BEED9 /* Preview Assets.xcassets */; };
-		0D016BE62857BB5C007BEED9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE52857BB5C007BEED9 /* Storage.swift */; };
+		0D016BE62857BB5C007BEED9 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE52857BB5C007BEED9 /* StorageService.swift */; };
 		0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE72858749E007BEED9 /* SymbolGridCell.swift */; };
 		0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */; };
 		0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */; };
+		0D95BD1C2A027A3100507471 /* DependencyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D95BD1B2A027A3100507471 /* DependencyBuilder.swift */; };
 		0DC3A37D29FFF41200AF5882 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3A37C29FFF41200AF5882 /* GoogleService-Info.plist */; };
 		0DC3A38029FFF57C00AF5882 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC3A37F29FFF57C00AF5882 /* FirebaseCrashlytics */; };
 		0DC3A38229FFF57C00AF5882 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC3A38129FFF57C00AF5882 /* FirebaseRemoteConfigSwift */; };
 		0DC3A38429FFF62000AF5882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A38329FFF62000AF5882 /* AppDelegate.swift */; };
 		0DC3A3872A004DA700AF5882 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC3A3862A004DA700AF5882 /* FirebaseAnalyticsSwift */; };
+		0DC3A38A2A01319A00AF5882 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A3892A01319A00AF5882 /* DataProvider.swift */; };
+		0DC3A38D2A0131DF00AF5882 /* SymbolsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A38C2A0131DF00AF5882 /* SymbolsCategory.swift */; };
+		0DC3A38F2A01321900AF5882 /* AppConfigProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A38E2A01321900AF5882 /* AppConfigProvider.swift */; };
+		0DC3A3922A0135AE00AF5882 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A3912A0135AE00AF5882 /* EnvironmentValues.swift */; };
 		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
 		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
 		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
@@ -51,16 +56,20 @@
 		0D016BC328572B3D007BEED9 /* SymbolsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsListView.swift; sourceTree = "<group>"; };
 		0D016BC528572B3F007BEED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D016BC828572B3F007BEED9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0D016BE52857BB5C007BEED9 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		0D016BE52857BB5C007BEED9 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		0D016BE72858749E007BEED9 /* SymbolGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolGridCell.swift; sourceTree = "<group>"; };
 		0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsCategoriesView.swift; sourceTree = "<group>"; };
 		0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSymbolView.swift; sourceTree = "<group>"; };
+		0D95BD1B2A027A3100507471 /* DependencyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyBuilder.swift; sourceTree = "<group>"; };
 		0DC3A37C29FFF41200AF5882 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0DC3A38329FFF62000AF5882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0DC3A3892A01319A00AF5882 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		0DC3A38C2A0131DF00AF5882 /* SymbolsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsCategory.swift; sourceTree = "<group>"; };
+		0DC3A38E2A01321900AF5882 /* AppConfigProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigProvider.swift; sourceTree = "<group>"; };
+		0DC3A3912A0135AE00AF5882 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		0DDB91212858DE860029FCED /* SymbolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsView.swift; sourceTree = "<group>"; };
 		0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsViewL.swift; sourceTree = "<group>"; };
 		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
-		C845D038288567B500ABB5DF /* SanFranSymsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsTests.swift; sourceTree = "<group>"; };
 		C845D0432885687A00ABB5DF /* SanFranSymsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanFranSymsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsTests.swift; sourceTree = "<group>"; };
 		C845D0502885795300ABB5DF /* SanFranSymsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanFranSymsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +110,6 @@
 			children = (
 				0D016BE22857B94E007BEED9 /* Data */,
 				0D016BC028572B3D007BEED9 /* SanFranSyms */,
-				C845D037288567B500ABB5DF /* SanFranSymsTests */,
 				C845D0442885687A00ABB5DF /* SanFranSymsTests */,
 				C845D0512885795300ABB5DF /* SanFranSymsUITests */,
 				0D016BBF28572B3D007BEED9 /* Products */,
@@ -122,11 +130,12 @@
 		0D016BC028572B3D007BEED9 /* SanFranSyms */ = {
 			isa = PBXGroup;
 			children = (
+				0D95BD182A01A06500507471 /* PropertyWrappers */,
 				0DC3A37C29FFF41200AF5882 /* GoogleService-Info.plist */,
-				0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */,
-				0DC3A38329FFF62000AF5882 /* AppDelegate.swift */,
+				0DC3A3902A0133C000AF5882 /* App */,
 				0D18FAE7285BA89A0044026D /* Views */,
-				0D016BE52857BB5C007BEED9 /* Storage.swift */,
+				0DC3A38B2A0131CC00AF5882 /* Entities */,
+				0DC3A3882A01316D00AF5882 /* DataSources */,
 				0D016BC528572B3F007BEED9 /* Assets.xcassets */,
 				0D016BC728572B3F007BEED9 /* Preview Content */,
 			);
@@ -162,13 +171,49 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0D95BD182A01A06500507471 /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
 		0DC3A3852A004DA700AF5882 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
+		0DC3A3882A01316D00AF5882 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				0D016BE52857BB5C007BEED9 /* StorageService.swift */,
+				0DC3A38E2A01321900AF5882 /* AppConfigProvider.swift */,
+				0DC3A3892A01319A00AF5882 /* DataProvider.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		0DC3A38B2A0131CC00AF5882 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0DC3A38C2A0131DF00AF5882 /* SymbolsCategory.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		0DC3A3902A0133C000AF5882 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0D016BC128572B3D007BEED9 /* SanFranSymsApp.swift */,
+				0DC3A38329FFF62000AF5882 /* AppDelegate.swift */,
+				0DC3A3912A0135AE00AF5882 /* EnvironmentValues.swift */,
+				0D95BD1B2A027A3100507471 /* DependencyBuilder.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		C845D0442885687A00ABB5DF /* SanFranSymsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,12 +373,17 @@
 			files = (
 				0D016BC428572B3D007BEED9 /* SymbolsListView.swift in Sources */,
 				0D016BC228572B3D007BEED9 /* SanFranSymsApp.swift in Sources */,
+				0DC3A38A2A01319A00AF5882 /* DataProvider.swift in Sources */,
 				0D016BEA2858763F007BEED9 /* SymbolsCategoriesView.swift in Sources */,
 				0DC3A38429FFF62000AF5882 /* AppDelegate.swift in Sources */,
 				0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */,
 				0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */,
 				0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */,
-				0D016BE62857BB5C007BEED9 /* Storage.swift in Sources */,
+				0D95BD1C2A027A3100507471 /* DependencyBuilder.swift in Sources */,
+				0D016BE62857BB5C007BEED9 /* StorageService.swift in Sources */,
+				0DC3A3922A0135AE00AF5882 /* EnvironmentValues.swift in Sources */,
+				0DC3A38F2A01321900AF5882 /* AppConfigProvider.swift in Sources */,
+				0DC3A38D2A0131DF00AF5882 /* SymbolsCategory.swift in Sources */,
 				0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SymbolsCategoriesView: View {
+    @Environment(\.contentProvider) var contentProvider
+
     typealias Category = SymbolsCategory
 
-    let categories: [Category]
+    var categories: [Category] { contentProvider.allCategories }
 
     @State private var selectedCategory: Category?
 
@@ -39,8 +41,8 @@ struct SymbolsCategoriesView: View {
         }
     }
 
-    init(categories: [Category], selectedCategory: Category? = nil) {
-        self.categories = categories
+    init(/*categories: [Category],*/selectedCategory: Category? = nil) {
+//        self.categories = categories
         
         guard categories.count > 1 else { return }
 
@@ -50,6 +52,6 @@ struct SymbolsCategoriesView: View {
 
 struct SymbolsCategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        SymbolsCategoriesView(categories: [])
+        SymbolsCategoriesView()
     }
 }
