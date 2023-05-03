@@ -144,4 +144,17 @@ enum AppSymbolRenderingMode: String, CaseIterable, Identifiable {
             case .hierarchical: return .hierarchical
         }
     }
+
+    var uiKitCode: String {
+        switch self {
+            case .palette:
+                return "UIImage(systemName: \"%1$@\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(paletteColors: [UIColor(cgColor: %2$@), UIColor(cgColor: %3$@)]))!"
+            case .multicolor:
+                return "UIImage(systemName: \"%1$@\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: %3$@)))!"
+            case .hierarchical:
+                return "UIImage(systemName: \"%1$@\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: %3$@)))!"
+            case .monochrome:
+                return "UIImage(systemName: \"%1$@\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: %3$@))!"
+        }
+    }
 }

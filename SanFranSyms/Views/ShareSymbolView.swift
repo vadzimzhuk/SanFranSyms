@@ -114,16 +114,7 @@ extension ShareSymbolView {
         }
 
         var sharedUIKitCode: String {
-            switch mode {
-                case .palette:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(paletteColors: [UIColor(cgColor: \(secondaryColor.asCGColorCode)), UIColor(cgColor: \(primaryColor.asCGColorCode))]))!"
-                case .multicolor:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: \(primaryColor.asCGColorCode))))!"
-                case .hierarchical:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: \(primaryColor.asCGColorCode))))!"
-                case .monochrome:
-                    return "UIImage(systemName: \"\(symbolName)\")!.applyingSymbolConfiguration(UIImage.SymbolConfiguration(hierarchicalColor: UIColor(cgColor: \(primaryColor.asCGColorCode)))!"
-            }
+            String(format: mode.uiKitCode, symbolName, secondaryColor.asCGColorCode, primaryColor.asCGColorCode)
         }
 
         var sharedSwiftUICode: String {

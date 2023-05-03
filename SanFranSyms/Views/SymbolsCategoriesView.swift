@@ -17,7 +17,7 @@ struct SymbolsCategoriesView: View {
     @State private var selectedCategory: Category?
 
     var body: some View {
-        NavigationView { //move upper by hierarchy - out of this class
+        NavigationView { //move upper by hierarchy - out of the class
             List(categories, id: \.self, selection: $selectedCategory) { category in
                 NavigationLink {
                     SymbolsListView(model: .init(category: category))
@@ -25,15 +25,6 @@ struct SymbolsCategoriesView: View {
                     Label("\(category.name.localizedCapitalized) (\(category.symbols.count))", systemImage: category.iconName)
                 }
             }
-//            List (selection: $selectedCategory) {
-//                ForEach(categories, id: \.self) { category in
-//                    NavigationLink {
-//                        SymbolsListView(model: .init(category: category))
-//                    } label: {
-//                        Label("\(category.name.localizedCapitalized) (\(category.symbols.count))", systemImage: category.iconName)
-//                    }
-//                }
-//            }
             .listStyle(.sidebar)
             .navigationTitle("Categories")
 
@@ -41,8 +32,7 @@ struct SymbolsCategoriesView: View {
         }
     }
 
-    init(/*categories: [Category],*/selectedCategory: Category? = nil) {
-//        self.categories = categories
+    init(selectedCategory: Category? = nil) {
         
         guard categories.count > 1 else { return }
 
