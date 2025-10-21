@@ -28,6 +28,7 @@
 		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
 		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
 		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
+		1B49A0DCFB044D93DFB43FF9 /* SubscriptionExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C225FF4BDF4E3612D87B13A /* SubscriptionExampleView.swift */; };
 		A8D9DDE791E2EE7D6B510624 /* SubscriptionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CB30DA0BD7A94879259054 /* SubscriptionServiceTests.swift */; };
 		B2C88070F902B2EA297FE4FF /* SubscriptionProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3243EC2A1B0C6D68D65E4E50 /* SubscriptionProduct.swift */; };
 		C845D0462885687A00ABB5DF /* SanFranSymsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */; };
@@ -75,6 +76,7 @@
 		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
 		3243EC2A1B0C6D68D65E4E50 /* SubscriptionProduct.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SubscriptionProduct.swift; sourceTree = "<group>"; };
 		4CAC83E04FB00CB8B89F7E7C /* SubscriptionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
+		6C225FF4BDF4E3612D87B13A /* SubscriptionExampleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SubscriptionExampleView.swift; sourceTree = "<group>"; };
 		A1CB30DA0BD7A94879259054 /* SubscriptionServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SubscriptionServiceTests.swift; sourceTree = "<group>"; };
 		C845D0432885687A00ABB5DF /* SanFranSymsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanFranSymsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsTests.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				0D016BE72858749E007BEED9 /* SymbolGridCell.swift */,
 				0D016BE92858763F007BEED9 /* SymbolsCategoriesView.swift */,
 				0D18FAE8285BA8C00044026D /* ShareSymbolView.swift */,
+				6C225FF4BDF4E3612D87B13A /* SubscriptionExampleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				0D016BE82858749E007BEED9 /* SymbolGridCell.swift in Sources */,
 				B2C88070F902B2EA297FE4FF /* SubscriptionProduct.swift in Sources */,
 				D3BC8523A2898B856D36D426 /* SubscriptionService.swift in Sources */,
+				1B49A0DCFB044D93DFB43FF9 /* SubscriptionExampleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
