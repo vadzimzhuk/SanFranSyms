@@ -15,6 +15,10 @@ struct ContentProviderKey: EnvironmentKey {
 struct AppConfigProviderKey: EnvironmentKey {
     static let defaultValue: AppConfigProvider = DependencyBuilder.appConfigProvider
 }
+    // Subscription
+struct SubscriptionServiceKey: EnvironmentKey {
+    static let defaultValue: SubscriptionService? = DependencyBuilder.subscriptionService
+}
 
     // MARK: - EnvironmentValues
 extension EnvironmentValues {
@@ -30,10 +34,23 @@ extension EnvironmentValues {
             self[AppConfigProviderKey.self] = newValue
         }
     }
+    
+    var subscriptionService: SubscriptionService? {
+        get {
+            self[SubscriptionServiceKey.self]
+        }
+        set {
+            self[SubscriptionServiceKey.self] = newValue
+        }
+    }
 }
 
 extension View {
     func appConfigProvider(_ appConfigProvider: AppConfigProvider) -> some View {
         environment(\.appConfigProvider, appConfigProvider)
+    }
+    
+    func subscriptionService(_ subscriptionService: SubscriptionService?) -> some View {
+        environment(\.subscriptionService, subscriptionService)
     }
 }

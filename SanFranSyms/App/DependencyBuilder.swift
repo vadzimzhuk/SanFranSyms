@@ -19,4 +19,11 @@ enum DependencyBuilder {
     static var sfSymbolsProvider: SFSymbolsProvider = {
         SFSymbolsManager(storageService: fileStorageService, configProvider: appConfigProvider)
     }()
+    
+    static var subscriptionService: SubscriptionService? = {
+        if #available(iOS 15.0, *) {
+            return SubscriptionManager()
+        }
+        return nil
+    }()
 }
