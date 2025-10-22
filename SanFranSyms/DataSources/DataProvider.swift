@@ -9,6 +9,7 @@ import Foundation
 
 protocol SFSymbolsProvider {
     var allCategories: [SymbolsCategory] { get }
+    var sfSymbolsCategories: [SFSymbolsCategory] { get }
 }
 
 class SFSymbolsManager: SFSymbolsProvider {
@@ -18,6 +19,10 @@ class SFSymbolsManager: SFSymbolsProvider {
     var allCategories: [SymbolsCategory] {
 //        !configProvider.content.isEmpty ? configProvider.content : storageService.getSymbols()
         storageService.getSymbols()
+    }
+
+    var sfSymbolsCategories: [SFSymbolsCategory] {
+        storageService.sfSymbolsCategories
     }
 
     init(storageService: StorageService, configProvider: AppConfigProvider) {

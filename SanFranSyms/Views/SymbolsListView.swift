@@ -18,7 +18,7 @@ struct SymbolsListView: View {
     }
 
     private var symbolNames: [String] {
-        model.symbols
+        model.searchResult
     }
 
     private var threeColumnsGridStyle: [GridItem] = [
@@ -58,14 +58,16 @@ struct SymbolsListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SymbolsListView(model: .init(category: SymbolsCategory(name: "", iconName: "", symbols: [])))
+        SymbolsListView(model: .init(category: SFSymbolsCategory(name: "", iconName: "", sfSymbols: [])))
     }
 }
 
 extension SymbolsListView {
 
     class ViewModel: ObservableObject {
-        var category: SymbolsCategory
+
+        var category: SFSymbolsCategoryProtocol
+        private var searchDelayTimer: Timer?
 
         var title: String {
             "\(category.name) (\(symbols.count))"
@@ -75,10 +77,50 @@ extension SymbolsListView {
             category.symbols.filter { !searchText.isEmpty ? $0.contains(searchText.lowercased()) : true }
         }
 
-        @Published var searchText: String = ""
 
-        init(category: SymbolsCategory) {
+
+//        @Published
+        var searchText: String = "" {
+            didSet {
+                if !searchText.isEmpty {
+                    scheduleSearch(text: searchText)
+                } else {
+                    searchDelayTimer?.invalidate()
+                    searchResult = category.symbols
+                }
+            }
+        }
+
+        @Published var searchResult: [String]
+
+        init(category: SFSymbolsCategoryProtocol) {
             self.category = category
+            self.searchResult = category.symbols
+        }
+
+        func scheduleSearch(text: String) {
+            searchDelayTimer?.invalidate()
+            searchDelayTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
+                self?.search(text: text)
+            }
+        }
+
+        func search(text: String) {
+            let result = SFSymbolSemanticSearchEngine.shared.search(text, in: category.sfSymbols, topK: 100).map { ($0.symbol.id, $0.score) }.filter { $0.1 > 0.3 }
+            searchResult = result.map { $0.0 }
+
+            print("Search term: \(text)")
+            print("Result:")
+
+            for item in result {
+                print("\(item.0): \(item.1)")
+            }
         }
     }
+}
+
+protocol SFSymbolsCategoryProtocol {
+    var name: String { get }
+    var symbols: [String] { get }
+    var sfSymbols: [SFSymbol] { get }
 }
