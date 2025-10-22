@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol SFSymbolsProvider {
-    var allCategories: [SymbolsCategory] { get }
+protocol SFSymbolsProvider: ObservableObject {
+//    var allCategories: [SymbolsCategory] { get }
     var sfSymbolsCategories: [SFSymbolsCategory] { get }
 }
 
@@ -16,10 +16,10 @@ class SFSymbolsManager: SFSymbolsProvider {
     let storageService: StorageService
     let configProvider: AppConfigProvider
 
-    var allCategories: [SymbolsCategory] {
+//    var allCategories: [SymbolsCategory] {
 //        !configProvider.content.isEmpty ? configProvider.content : storageService.getSymbols()
-        storageService.getSymbols()
-    }
+//        storageService.getSymbols()
+//    }
 
     var sfSymbolsCategories: [SFSymbolsCategory] {
         storageService.sfSymbolsCategories

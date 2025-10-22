@@ -77,16 +77,21 @@ extension SymbolsListView {
             category.symbols.filter { !searchText.isEmpty ? $0.contains(searchText.lowercased()) : true }
         }
 
-
+        @Published var semanticSearhIsOn: Bool = true
+        var semanticSearchAvailable: Bool
 
 //        @Published
         var searchText: String = "" {
             didSet {
-                if !searchText.isEmpty {
-                    scheduleSearch(text: searchText)
+                if semanticSearhIsOn {
+                    if !searchText.isEmpty {
+                        scheduleSearch(text: searchText)
+                    } else {
+                        searchDelayTimer?.invalidate()
+                        searchResult = category.symbols
+                    }
                 } else {
-                    searchDelayTimer?.invalidate()
-                    searchResult = category.symbols
+                    searchResult = category.sfSymbols.map { $0.id }.filter { $0.contains(searchText) }
                 }
             }
         }
@@ -96,11 +101,13 @@ extension SymbolsListView {
         init(category: SFSymbolsCategoryProtocol) {
             self.category = category
             self.searchResult = category.symbols
+            self.semanticSearchAvailable = category.sfSymbols.first?.token.isEmpty == false
+            self.semanticSearhIsOn = semanticSearchAvailable
         }
 
         func scheduleSearch(text: String) {
             searchDelayTimer?.invalidate()
-            searchDelayTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
+            searchDelayTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
                 self?.search(text: text)
             }
         }

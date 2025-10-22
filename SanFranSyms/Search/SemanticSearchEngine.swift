@@ -304,8 +304,15 @@ public struct SFSymbol: Identifiable, Hashable, Codable {
     public var token: [Double] = []
     public var text: String { id.split(separator: ".").joined(separator: " ") }
 
-    public init(id: String) {
+    public init(id: String, tokenize: Bool = false) {
         self.id = id
+
+        if tokenize {
+            self.tokenize()
+        }
+    }
+
+    public mutating func tokenize() {
         self.token = tokenize(text: text)
     }
 

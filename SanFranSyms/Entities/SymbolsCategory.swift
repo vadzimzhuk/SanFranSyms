@@ -37,6 +37,14 @@ struct SFSymbolsCategory: Hashable, Codable {
             return excludedSymbols.contains(symbol.id)
         }
     }
+
+    mutating func tokenizeSymbols() -> Self {
+        for i in 0...(sfSymbols.count - 1) {
+            sfSymbols[i].tokenize()
+        }
+
+        return self
+    }
 }
 
 extension SFSymbolsCategory: SFSymbolsCategoryProtocol {
