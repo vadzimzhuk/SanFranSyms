@@ -10,6 +10,7 @@ import Firebase
 import SwiftUI
 
 protocol StorageService {
+    var sfSymbolsCategories: [SFSymbolsCategory] { get }
     func getSymbols() -> [SymbolsCategory]
 }
 
@@ -17,12 +18,31 @@ typealias ContentData = [SymbolsCategory]
 
 class FileStorageManager: StorageService {
     static let fileName = "SFSymbolsAll"
+    static let sfFileName = "SFSymbolEntities"
     static let fileNameExtension = ".json"
 
     private var symbolCategories: [SymbolsCategory] { getCategories() }
+    var sfSymbolsCategories: [SFSymbolsCategory] = []
 
     init() {
         updateJSONWithAllCategory()
+
+        let categories = getSfCategories()
+
+        if !categories.isEmpty {
+            self.sfSymbolsCategories = categories
+        } else {
+            self.sfSymbolsCategories = parseSFSymbolCategories()
+            saveSFSymbolCategories()
+        }
+    }
+
+    private func parseSFSymbolCategories() -> [SFSymbolsCategory] {
+        print(Date())
+        let symbols = symbolCategories.map { $0.asSFSymbolsCategory }
+        print(Date())
+
+        return symbols
     }
 
     private func getBundleData() -> Data? {
@@ -95,11 +115,52 @@ class FileStorageManager: StorageService {
         return allCategory
     }
 
-    func getSymbols() -> [SymbolsCategory] {
+    internal func getSymbols() -> [SymbolsCategory] {
         return symbolCategories.filter { category in
 //            guard #available(iOS 16.0, *) else { return category.name != "what's new" }
 
             return true
         }
+    }
+
+    private func saveSFSymbolCategories() {
+        let fileManager = FileManager.default
+        guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Failed to get documents directory")
+            return
+        }
+
+        let fileURL = documentsURL.appendingPathComponent(Self.sfFileName).appendingPathExtension(Self.fileNameExtension)
+
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let data = try encoder.encode(sfSymbolsCategories)
+
+            try data.write(to: fileURL)
+            print("Successfully saved sfSymbolsCategories to \(fileURL)")
+        } catch {
+            print("Failed to save sfSymbolsCategories: \(error)")
+        }
+    }
+
+    private func getSfCategories() -> [SFSymbolsCategory] {
+        let fileManager = FileManager.default
+        guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Failed to get documents directory")
+            return []
+        }
+
+        let url = documentsURL.appendingPathComponent(Self.sfFileName).appendingPathExtension(Self.fileNameExtension)
+
+        do {
+            let data = try Data(contentsOf: url)
+            let symbols = try JSONDecoder().decode([SFSymbolsCategory].self, from: data)
+            return symbols
+        } catch {
+            print(error)
+        }
+
+        return []
     }
 }

@@ -11,6 +11,7 @@ import Firebase
 @main
 struct SanFranSymsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    let searchEngine = SFSymbolSemanticSearchEngine.shared
 
     var body: some Scene {
         WindowGroup {

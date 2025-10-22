@@ -10,15 +10,16 @@ import SwiftUI
 struct SymbolsCategoriesView: View {
     @Environment(\.contentProvider) var contentProvider
 
-    typealias Category = SymbolsCategory
+    typealias Category = SFSymbolsCategory
 
-    var categories: [Category] { contentProvider.allCategories }
+//    var categories: [Category] { contentProvider.allCategories }
+    var sfSymbolsCategories: [Category] { contentProvider.sfSymbolsCategories }
 
     @State private var selectedCategory: Category?
 
     var body: some View {
         NavigationView { //move upper by hierarchy - out of the class
-            List(categories, id: \.self, selection: $selectedCategory) { category in
+            List(sfSymbolsCategories, id: \.self, selection: $selectedCategory) { category in
                 NavigationLink {
                     SymbolsListView(model: .init(category: category))
                 } label: {
@@ -28,10 +29,10 @@ struct SymbolsCategoriesView: View {
             .listStyle(.sidebar)
             .navigationTitle("Categories")
 
-            SymbolsListView(model: .init(category: categories.first { $0.name == "all" } ?? SymbolsCategory(name: "", iconName: "", symbols: [])))
+            SymbolsListView(model: .init(category: sfSymbolsCategories.first { $0.name == "all" } ?? SFSymbolsCategory(name: "", iconName: "", sfSymbols: [])))
         }
         .onAppear {
-            if let category = categories.first {
+            if let category = sfSymbolsCategories.first {
                 selectedCategory = category
             }
         }
