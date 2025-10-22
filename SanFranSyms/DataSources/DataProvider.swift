@@ -16,7 +16,8 @@ class SFSymbolsManager: SFSymbolsProvider {
     let configProvider: AppConfigProvider
 
     var allCategories: [SymbolsCategory] {
-        configProvider.content ?? storageService.getSymbols()
+//        !configProvider.content.isEmpty ? configProvider.content : storageService.getSymbols()
+        storageService.getSymbols()
     }
 
     init(storageService: StorageService, configProvider: AppConfigProvider) {

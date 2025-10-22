@@ -30,13 +30,18 @@ struct SymbolsCategoriesView: View {
 
             SymbolsListView(model: .init(category: categories.first { $0.name == "all" } ?? SymbolsCategory(name: "", iconName: "", symbols: [])))
         }
+        .onAppear {
+            if let category = categories.first {
+                selectedCategory = category
+            }
+        }
     }
 
     init(selectedCategory: Category? = nil) {
         
-        guard categories.count > 1 else { return }
+//        guard categories.count > 1 else { return }
 
-        self.selectedCategory = selectedCategory ?? categories[1]
+
     }
 }
 

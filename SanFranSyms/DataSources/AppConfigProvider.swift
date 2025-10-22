@@ -17,7 +17,7 @@ class AppConfigManager: AppConfigProvider {
     private let remoteConfig: RemoteConfig
 
     var symbols: [SymbolsCategory] {
-        let symbolsData = remoteConfig.configValue(forKey: "content").dataValue
+        let symbolsData = remoteConfig.configValue(forKey: "sfsymbols").dataValue
 
         if symbolsData.isEmpty {
             Task {
