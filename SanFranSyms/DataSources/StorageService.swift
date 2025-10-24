@@ -8,21 +8,65 @@
 import Foundation
 import Firebase
 import SwiftUI
+import SwiftData
+
+@Model
+class SFSymbolsCategory {
+    var name: String
+    var iconName: String
+    var sfSymbols: [SFSymbol]
+
+    init(name: String, iconName: String, sfSymbols: [SFSymbol]) {
+        self.name = name
+        self.iconName = iconName
+        self.sfSymbols = sfSymbols
+    }
+}
+
+extension SymbolsCategory {
+    var asSFSymbolsCategory: SFSymbolsCategory {
+        SFSymbolsCategory(name: name, iconName: iconName, sfSymbols: symbols.map { SFSymbol(id: $0) })
+    }
+}
+
+@Model
+class SFSymbol {
+    var id: String
+    var text: String
+    var token: [Double] = []
+
+    init(id: String) {
+        self.id = id
+        self.text = id.split(separator: ".").joined(separator: " ")
+    }
+}
 
 protocol StorageService {
-    func getSymbols() -> [SymbolsCategory]
+    var sfSymbolsCategories: [SFSymbolsCategory] { get }
+    func save()
 }
 
 typealias ContentData = [SymbolsCategory]
 
 class FileStorageManager: StorageService {
+
+    private let modelContext: ModelContext
+
     static let fileName = "SFSymbolsAll"
     static let fileNameExtension = ".json"
 
-    private var symbolCategories: [SymbolsCategory] { getCategories() }
+    var sfSymbolsCategories: [SFSymbolsCategory] {
+        do {
+            return try modelContext.fetch(FetchDescriptor<SFSymbolsCategory>())
+        } catch {
+            print("Failed to fetch categories: \(error)")
+            return []
+        }
+    }
 
-    init() {
-        updateJSONWithAllCategory()
+    init(modelContainer: ModelContainer) {
+        self.modelContext = ModelContext(modelContainer)
+        fillDBIfNeeded()
     }
 
     private func getBundleData() -> Data? {
@@ -33,73 +77,31 @@ class FileStorageManager: StorageService {
         return try? Data(contentsOf: url)
     }
 
-    private func updateJSONWithAllCategory() {
-        guard let url = Bundle.main.url(forResource: Self.fileName, withExtension: Self.fileNameExtension) else { return }
+    private func fillDBIfNeeded() {
+        if sfSymbolsCategories.isEmpty {
+            fetchDataToDB()
+        }
+    }
 
+    private func fetchDataToDB() {
         do {
             guard let data = getBundleData() else { return }
             var response = try JSONDecoder().decode(SymbolsCategoriesResponse.self, from: data)
 
-            // Remove existing "all" category if it exists
-            response.categories.removeAll { $0.name.lowercased() == "all" }
-
-            // Insert the generated all category at the beginning
-            let allCategory = allSymbolsCategory()
-            response.categories.insert(allCategory, at: 0)
-
-            // Encode back to JSON
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            let updatedData = try encoder.encode(response)
-
-            // Write back to bundle (Note: This won't work in production as bundle is read-only)
-            // For development, you might want to write to Documents directory instead
-            try updatedData.write(to: url)
-
-        } catch {
-            print("Failed to update JSON file: \(error)")
-        }
-    }
-
-    private func getCategories() -> [SymbolsCategory] {
-        guard let data = getBundleData() else { return [] }
-
-        let symbols = try! JSONDecoder().decode(SymbolsCategoriesResponse.self, from: data)
-
-        if #available(iOS 16.0, *) {
-            return symbols.categories
-        } else {
-            let excludedCategory = symbols.categories.first { $0.name == "what's new" }
-
-            let categories: [SymbolsCategory] = symbols.categories.map { category in
-                var cat = category
-                cat.filterSymbols(excludedSymbols: excludedCategory?.symbols ?? [])
-                return cat
+            let categories = response.categories.map { $0.asSFSymbolsCategory }
+            for category in categories {
+                modelContext.insert(category)
             }
-
-            return categories
+        } catch {
+            print(error)
         }
     }
 
-    private func allSymbolsCategory() -> SymbolsCategory {
-        let categories = getCategories()
-        let symbols = symbolCategories.flatMap(\.symbols)
-        let uniqueSymbols = Array(Set(symbols))
-
-        let allCategory = SymbolsCategory(
-            name: "all",
-            iconName: "square.grid.2x2",
-            symbols: uniqueSymbols
-        )
-
-        return allCategory
-    }
-
-    func getSymbols() -> [SymbolsCategory] {
-        return symbolCategories.filter { category in
-//            guard #available(iOS 16.0, *) else { return category.name != "what's new" }
-
-            return true
+    func save() {
+        do {
+            try modelContext.save()
+        } catch {
+            print("❌ error saving the context: \(error)")
         }
     }
 }

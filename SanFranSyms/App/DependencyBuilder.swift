@@ -11,12 +11,4 @@ enum DependencyBuilder {
     static var appConfigProvider: AppConfigProvider = {
         AppConfigManager()
     }()
-
-    static var fileStorageService: StorageService = {
-        FileStorageManager()
-    }()
-
-    static var sfSymbolsProvider: SFSymbolsProvider = {
-        SFSymbolsManager(storageService: fileStorageService, configProvider: appConfigProvider)
-    }()
 }

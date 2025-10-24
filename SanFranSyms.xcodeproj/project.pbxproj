@@ -25,6 +25,7 @@
 		0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91212858DE860029FCED /* SymbolDetailsView.swift */; };
 		0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */; };
 		0DDB9128285A18170029FCED /* SFSymbolsAll.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9127285A18170029FCED /* SFSymbolsAll.json */; };
+		809C79332EAAD70A00CB489A /* SemanticSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C79322EAAD70A00CB489A /* SemanticSearchEngine.swift */; };
 		80B158322E8B33E000863FBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 80B158312E8B33E000863FBF /* FirebaseAnalytics */; };
 		80B158342E8B33E000863FBF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 80B158332E8B33E000863FBF /* FirebaseCrashlytics */; };
 		80B158362E8B346400863FBF /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 80B158352E8B346400863FBF /* FirebaseRemoteConfig */; };
@@ -71,6 +72,7 @@
 		0DDB91212858DE860029FCED /* SymbolDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsView.swift; sourceTree = "<group>"; };
 		0DDB91232859E8480029FCED /* SymbolDetailsViewL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsViewL.swift; sourceTree = "<group>"; };
 		0DDB9127285A18170029FCED /* SFSymbolsAll.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SFSymbolsAll.json; sourceTree = "<group>"; };
+		809C79322EAAD70A00CB489A /* SemanticSearchEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticSearchEngine.swift; sourceTree = "<group>"; };
 		80B158392E8BC93E00863FBF /* import.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = import.json; sourceTree = "<group>"; };
 		C845D0432885687A00ABB5DF /* SanFranSymsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanFranSymsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C845D0452885687A00ABB5DF /* SanFranSymsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanFranSymsTests.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				0D016BE52857BB5C007BEED9 /* StorageService.swift */,
 				0DC3A38E2A01321900AF5882 /* AppConfigProvider.swift */,
 				0DC3A3892A01319A00AF5882 /* DataProvider.swift */,
+				809C79322EAAD70A00CB489A /* SemanticSearchEngine.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				0DDB91242859E8480029FCED /* SymbolDetailsViewL.swift in Sources */,
 				0D18FAE9285BA8C00044026D /* ShareSymbolView.swift in Sources */,
 				0DDB91222858DE860029FCED /* SymbolDetailsView.swift in Sources */,
+				809C79332EAAD70A00CB489A /* SemanticSearchEngine.swift in Sources */,
 				0D95BD1C2A027A3100507471 /* DependencyBuilder.swift in Sources */,
 				0D016BE62857BB5C007BEED9 /* StorageService.swift in Sources */,
 				0DC3A3922A0135AE00AF5882 /* EnvironmentValues.swift in Sources */,
@@ -605,7 +609,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L2HG8KUPMF;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -624,7 +628,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L2HG8KUPMF;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -642,7 +646,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L2HG8KUPMF;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -660,7 +664,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L2HG8KUPMF;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vadzimzhuk.SanFranSymsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -19,7 +19,7 @@ class SanFranSymsTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        fileStorageService = FileStorageManager()
+        fileStorageService = FileStorageManager(modelContainer: <#T##ModelContainer#>)
         appConfigService = AppConfigManager()
         sfSymbolsProvider = SFSymbolsManager(storageService: fileStorageService,
                                              configProvider: appConfigService)
@@ -55,7 +55,7 @@ class SanFranSymsTests: XCTestCase {
     }
 
     func testFileStorageData() throws {
-        let symbols = fileStorageService.getSymbols()
+        let symbols = fileStorageService.sfSymbolsCategories//getSymbols()
 
         XCTAssertFalse(symbols.isEmpty)
         XCTAssertEqual(symbols.count, 29)
@@ -63,11 +63,11 @@ class SanFranSymsTests: XCTestCase {
     
     func testLocalSymbolsAvailability() throws {
         var errors: [Error] = []
-        let symbolCategories = fileStorageService.getSymbols()
+        let symbolCategories = fileStorageService.sfSymbolsCategories//getSymbols()
 
         symbolCategories.forEach { category in
-            category.symbols.forEach { symbol in
-                guard let _ = UIImage(systemName: symbol) else {
+            category.sfSymbols.forEach { symbol in
+                guard let _ = UIImage(systemName: symbol.id) else {
                     errors.append(NSError(domain: "Symbol \"\(symbol)\" is not supported", code: 1))
                     return
                 }
@@ -84,7 +84,7 @@ class SanFranSymsTests: XCTestCase {
 
     func testLocalDataSourcePerformance() throws {
         measure {
-            _ = fileStorageService.getSymbols()
+            _ = fileStorageService.sfSymbolsCategories//getSymbols()
         }
     }
 

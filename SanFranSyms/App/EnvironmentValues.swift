@@ -8,9 +8,7 @@
 import SwiftUI
 
     // Storage
-struct ContentProviderKey: EnvironmentKey {
-    static let defaultValue: SFSymbolsProvider = DependencyBuilder.sfSymbolsProvider
-}
+
     // Config
 struct AppConfigProviderKey: EnvironmentKey {
     static let defaultValue: AppConfigProvider = DependencyBuilder.appConfigProvider
@@ -18,9 +16,7 @@ struct AppConfigProviderKey: EnvironmentKey {
 
     // MARK: - EnvironmentValues
 extension EnvironmentValues {
-    var contentProvider: SFSymbolsProvider {
-        self[ContentProviderKey.self]
-    }
+
 
     var appConfigProvider: AppConfigProvider {
         get {

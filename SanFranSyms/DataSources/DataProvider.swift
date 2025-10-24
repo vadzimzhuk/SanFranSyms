@@ -7,21 +7,38 @@
 
 import Foundation
 
-protocol SFSymbolsProvider {
-    var allCategories: [SymbolsCategory] { get }
-}
-
-class SFSymbolsManager: SFSymbolsProvider {
+class SFSymbolsManager: ObservableObject {
     let storageService: StorageService
-    let configProvider: AppConfigProvider
+    let searchEngine: SFSymbolSemanticSearchEngine = .init()
 
-    var allCategories: [SymbolsCategory] {
-//        !configProvider.content.isEmpty ? configProvider.content : storageService.getSymbols()
-        storageService.getSymbols()
+    var allCategories: [SFSymbolsCategory] {
+        storageService.sfSymbolsCategories
     }
 
-    init(storageService: StorageService, configProvider: AppConfigProvider) {
+    init(storageService: StorageService) {
         self.storageService = storageService
-        self.configProvider = configProvider
+
+        checkTokens()
+    }
+
+    private func checkTokens() {
+        for category in allCategories {
+            for symbol in category.sfSymbols {
+                if symbol.token.isEmpty {
+
+                    Task {
+                        if let token = searchEngine.embeddingVector(for: symbol.text) {
+                            symbol.token = token
+                        } else {
+                            print("❌ Error embedding")
+                        }
+
+                        await MainActor.run {
+                            storageService.save()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
